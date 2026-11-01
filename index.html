@@ -1,0 +1,325 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#101014">
+<meta name="description" content="GYM PRO — خطتك، تمارينك، وتطورك في مكان واحد.">
+<title>GYM PRO</title>
+<link rel="manifest" href="manifest.webmanifest">
+<style>
+:root{--bg:#0b0b0e;--panel:#15151b;--panel2:#1d1d25;--red:#ef233c;--red2:#b8142b;--text:#f7f7fa;--muted:#a4a4b0;--line:#292932;--green:#43d19e}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,"Segoe UI",Tahoma,Arial,sans-serif;padding-bottom:86px}
+button,input,select{font:inherit}button{cursor:pointer}
+.app{max-width:760px;margin:auto;padding:18px 16px 24px}
+.top{display:flex;align-items:center;justify-content:space-between;margin-bottom:22px}
+.brand{display:flex;align-items:center;gap:10px}.mark{width:42px;height:42px;border-radius:13px;background:linear-gradient(145deg,var(--red),#8f1024);display:grid;place-items:center;font-weight:1000;font-style:italic;box-shadow:0 8px 24px #ef233c35}
+.brand h1{font-size:19px;letter-spacing:1.5px;margin:0}.brand small{display:block;color:var(--muted);font-size:10px;letter-spacing:2px;margin-top:2px}
+.lang{border:1px solid var(--line);background:var(--panel);color:white;border-radius:12px;padding:8px 11px}
+.eyebrow{color:var(--red);font-weight:800;font-size:12px;letter-spacing:1px}
+h2{font-size:25px;margin:7px 0 5px}p{color:var(--muted);line-height:1.65;margin:5px 0}
+.hero{background:radial-gradient(circle at 90% 0%,#5d1222 0,transparent 45%),linear-gradient(135deg,#1c1c24,#111116);border:1px solid #33232a;border-radius:23px;padding:21px;position:relative;overflow:hidden}
+.hero:after{content:"";position:absolute;width:170px;height:170px;border:22px solid #ef233c12;border-radius:50%;right:-65px;bottom:-100px}
+.hero h2{max-width:330px;font-size:27px;line-height:1.25}.hero p{max-width:330px;font-size:13px}
+.primary{background:var(--red);color:white;border:0;border-radius:12px;padding:12px 16px;font-weight:800;margin-top:13px;box-shadow:0 8px 22px #ef233c25}
+.section-head{display:flex;justify-content:space-between;align-items:center;margin:23px 2px 12px}.section-head h3{margin:0;font-size:17px}.muted-link{color:var(--red);font-size:12px;font-weight:700}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:14px}.stat{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:13px 10px}.stat b{display:block;font-size:20px}.stat span{color:var(--muted);font-size:11px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:17px;padding:14px;margin-bottom:10px}
+.row{display:flex;align-items:center;gap:12px}.grow{flex:1;min-width:0}.tile{width:48px;height:48px;border-radius:14px;background:#31151d;display:grid;place-items:center;font-size:23px;flex-shrink:0}
+.card h4{margin:0 0 4px;font-size:14px}.card small{color:var(--muted)}
+.pill{display:inline-block;background:#2a171d;color:#ff687a;border:1px solid #52212c;padding:5px 9px;border-radius:30px;font-size:10px;font-weight:700}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.exercise{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:14px;min-height:125px}
+.exercise .emoji{font-size:25px}.exercise h4{margin:9px 0 3px}.exercise p{font-size:11px;margin:0}
+.plan-card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:13px;text-align:start;color:var(--text);width:100%;min-height:128px}.plan-card:active{border-color:var(--red)}.plan-card h4{margin:8px 0 4px;font-size:14px}.plan-card p{font-size:11px;margin:0}.plan-card .plan-icon{font-size:24px}.schedule-row{padding:11px 0;border-bottom:1px solid var(--line)}.schedule-row:last-child{border-bottom:0}.schedule-row b{display:block;font-size:13px}.schedule-row small{display:block;color:var(--muted);line-height:1.6;margin-top:4px}.progressbar{height:8px;background:#303039;border-radius:20px;overflow:hidden;margin-top:10px}.progressbar i{display:block;height:100%;width:42%;background:linear-gradient(90deg,var(--red2),var(--red));border-radius:20px}
+.tabs{position:fixed;bottom:0;left:0;right:0;background:#111116f2;backdrop-filter:blur(14px);border-top:1px solid var(--line);display:flex;justify-content:center;padding:8px max(8px,env(safe-area-inset-left)) calc(8px + env(safe-area-inset-bottom));z-index:5}
+.tabwrap{width:100%;max-width:760px;display:grid;grid-template-columns:repeat(4,1fr);gap:4px}
+.tab{border:0;background:transparent;color:#888894;padding:7px 3px;border-radius:12px;font-size:10px}.tab .ico{display:block;font-size:19px;margin-bottom:3px}.tab.active{background:#32151d;color:#ff5b70}
+.page{display:none}.page.active{display:block}
+.field{width:100%;background:#101015;border:1px solid var(--line);color:white;padding:12px;border-radius:12px;margin:7px 0 12px}
+label{font-size:12px;color:var(--muted);display:block}
+.actions{display:flex;gap:8px;flex-wrap:wrap}.secondary{background:var(--panel2);color:white;border:1px solid var(--line);padding:10px 13px;border-radius:11px}
+.empty{padding:20px;text-align:center;color:var(--muted)}
+.footer{text-align:center;color:#696975;font-size:10px;margin:26px 0 8px}
+.toast{position:fixed;bottom:95px;left:50%;transform:translateX(-50%);background:#26262f;color:white;padding:10px 16px;border-radius:12px;opacity:0;pointer-events:none;transition:.2s;z-index:10}.toast.show{opacity:1}
+[dir="ltr"] .hero:after{right:auto;left:-65px}
+@media(min-width:600px){.grid2{grid-template-columns:repeat(3,1fr)}}
+</style>
+</head>
+<body>
+<div class="app">
+<header class="top">
+ <div class="brand"><div class="mark">GP</div><div><h1>GYM PRO</h1><small>TRAIN • TRACK • TRANSFORM</small></div></div>
+ <button class="lang" id="langBtn" aria-label="Change language">EN / AR</button>
+</header>
+
+<main>
+<section class="page active" id="home">
+ <div class="hero">
+  <div class="eyebrow" data-ar="ابدأ رحلتك" data-en="YOUR JOURNEY STARTS">ابدأ رحلتك</div>
+  <h2 data-ar="القوة مش صدفة. دي خطة والتزام." data-en="Strength is built. One workout at a time.">القوة مش صدفة. دي خطة والتزام.</h2>
+  <p data-ar="تابع تمرينك، نظّم أهدافك، وشوف تطورك خطوة بخطوة." data-en="Plan your training, stay consistent, and track every step forward.">تابع تمرينك، نظّم أهدافك، وشوف تطورك خطوة بخطوة.</p>
+  <button class="primary" onclick="showPage('workouts')" data-ar="استكشف التمارين ←" data-en="Explore workouts →">استكشف التمارين ←</button>
+ </div>
+ <div class="stats">
+  <div class="stat"><b id="workoutCount">0</b><span data-ar="تمرين مسجل" data-en="Workouts logged">تمرين مسجل</span></div>
+  <div class="stat"><b id="weightValue">—</b><span data-ar="آخر وزن (كجم)" data-en="Latest weight (kg)">آخر وزن (كجم)</span></div>
+  <div class="stat"><b>4</b><span data-ar="أقسام أساسية" data-en="Core sections">أقسام أساسية</span></div>
+ </div>
+ <div class="section-head"><h3 data-ar="ابدأ ببرنامجك" data-en="Choose your program">ابدأ ببرنامجك</h3><span class="muted-link" onclick="showPage('workouts')" data-ar="عرض الكل" data-en="View all">عرض الكل</span></div>
+ <div class="card row" onclick="showPage('workouts')"><div class="tile">🏋️</div><div class="grow"><h4>Push / Pull / Legs</h4><small data-ar="تقسيمة تدريب شائعة — 3 إلى 6 أيام" data-en="Popular split — 3 to 6 days">تقسيمة تدريب شائعة — 3 إلى 6 أيام</small></div><span class="pill">PPL</span></div>
+ <div class="card row" onclick="showPage('workouts')"><div class="tile">💪</div><div class="grow"><h4>Upper / Lower</h4><small data-ar="تقسيمة الجزء العلوي والسفلي" data-en="Upper and lower body split">تقسيمة الجزء العلوي والسفلي</small></div><span class="pill">4 DAYS</span></div>
+ <div class="section-head"><h3 data-ar="تقدمك" data-en="Your progress">تقدمك</h3><span class="muted-link" onclick="showPage('progress')" data-ar="تسجيل الوزن" data-en="Log weight">تسجيل الوزن</span></div>
+ <div class="card"><div class="row"><div class="grow"><h4 data-ar="كل خطوة بتفرق" data-en="Every step counts">كل خطوة بتفرق</h4><small data-ar="سجّل وزنك عشان تتابع التغيير مع الوقت." data-en="Log your weight to see changes over time.">سجّل وزنك عشان تتابع التغيير مع الوقت.</small></div><div class="tile">📈</div></div><div class="progressbar"><i></i></div></div>
+</section>
+
+<section class="page" id="workouts">
+ <div class="eyebrow" data-ar="مكتبة التدريب" data-en="TRAINING LIBRARY">مكتبة التدريب</div><h2 data-ar="اختار تمرينك" data-en="Find your workout">اختار تمرينك</h2>
+ <p data-ar="نماذج بداية قابلة للتعديل حسب مستواك وهدفك." data-en="Starter templates you can adapt to your level and goals.">نماذج بداية قابلة للتعديل حسب مستواك وهدفك.</p>
+ <div class="section-head"><h3 data-ar="أنظمة التدريب" data-en="Training systems">أنظمة التدريب</h3><span class="pill" data-ar="11 نظام" data-en="11 systems">11 نظام</span></div>
+ <p data-ar="اختار النظام المناسب لهدفك ومستواك. اضغط على أي نظام لعرض تقسيمة الأسبوع." data-en="Choose a system for your goal and level. Tap a plan to see its weekly split.">اختار النظام المناسب لهدفك ومستواك. اضغط على أي نظام لعرض تقسيمة الأسبوع.</p>
+ <div id="planCatalog" class="grid2"></div>
+ <div id="planDetails" class="card" style="display:none;margin-top:12px">
+  <div class="row"><div class="grow"><span class="eyebrow" data-ar="تفاصيل البرنامج" data-en="PLAN DETAILS">تفاصيل البرنامج</span><h3 id="planTitle" style="margin:5px 0">—</h3><small id="planMeta"></small></div><button class="secondary" onclick="closePlan()" data-ar="إغلاق" data-en="Close">إغلاق</button></div>
+  <p id="planDescription" style="margin-top:12px"></p>
+  <div id="planSchedule"></div>
+  <p id="planNote" style="font-size:11px;margin-top:12px"></p>
+ </div>
+ <div class="section-head"><h3 data-ar="تمارين أساسية" data-en="Exercise library">تمارين أساسية</h3></div>
+ <div class="grid2">
+  <div class="exercise"><div class="emoji">🏋️</div><h4>Bench Press</h4><p data-ar="الصدر — 3 مجموعات × 8–12" data-en="Chest — 3 sets × 8–12">الصدر — 3 مجموعات × 8–12</p></div>
+  <div class="exercise"><div class="emoji">🧲</div><h4>Lat Pulldown</h4><p data-ar="الظهر — 3 مجموعات × 10–12" data-en="Back — 3 sets × 10–12">الظهر — 3 مجموعات × 10–12</p></div>
+  <div class="exercise"><div class="emoji">🦵</div><h4>Squat</h4><p data-ar="الأرجل — 3 مجموعات × 8–10" data-en="Legs — 3 sets × 8–10">الأرجل — 3 مجموعات × 8–10</p></div>
+  <div class="exercise"><div class="emoji">💪</div><h4>Dumbbell Curl</h4><p data-ar="بايسبس — 3 مجموعات × 10–12" data-en="Biceps — 3 sets × 10–12">بايسبس — 3 مجموعات × 10–12</p></div>
+  <div class="exercise"><div class="emoji">🧱</div><h4>Shoulder Press</h4><p data-ar="كتف — 3 مجموعات × 8–12" data-en="Shoulders — 3 sets × 8–12">كتف — 3 مجموعات × 8–12</p></div>
+  <div class="exercise"><div class="emoji">🔩</div><h4>Leg Press</h4><p data-ar="أرجل — 3 مجموعات × 10–15" data-en="Legs — 3 sets × 10–15">أرجل — 3 مجموعات × 10–15</p></div>
+ </div>
+ <div class="card" style="margin-top:12px"><small data-ar="تنبيه: الأعداد أمثلة عامة. اختار أوزان مناسبة لتكنيك سليم، واطلب مساعدة مدرب عند الحاجة." data-en="Note: These are general examples. Use manageable loads with good form and ask a qualified coach when needed.">تنبيه: الأعداد أمثلة عامة. اختار أوزان مناسبة لتكنيك سليم، واطلب مساعدة مدرب عند الحاجة.</small></div>
+</section>
+
+<section class="page" id="progress">
+ <div class="eyebrow" data-ar="قياساتك" data-en="YOUR METRICS">قياساتك</div><h2 data-ar="تابع تطورك" data-en="Track your progress">تابع تطورك</h2>
+ <p data-ar="سجّل وزنك بانتظام. البيانات محفوظة على نفس الجهاز." data-en="Log your weight regularly. Your data is stored on this device.">سجّل وزنك بانتظام. البيانات محفوظة على نفس الجهاز.</p>
+ <div class="card">
+  <label for="weightInput" data-ar="الوزن الحالي (كجم)" data-en="Current weight (kg)">الوزن الحالي (كجم)</label>
+  <input class="field" id="weightInput" type="number" min="20" max="350" step="0.1" placeholder="مثال: 75.5">
+  <button class="primary" style="width:100%;margin-top:0" onclick="saveWeight()" data-ar="حفظ الوزن" data-en="Save weight">حفظ الوزن</button>
+ </div>
+ <div class="section-head"><h3 data-ar="سجل الوزن" data-en="Weight history">سجل الوزن</h3></div>
+ <div id="weightHistory" class="card"><div class="empty" data-ar="لسه مفيش قياسات. سجّل أول وزن ليك." data-en="No entries yet. Add your first weight.">لسه مفيش قياسات. سجّل أول وزن ليك.</div></div>
+ <div class="card"><h4 data-ar="نصيحة للتقدم" data-en="Progress tip">نصيحة للتقدم</h4><p data-ar="قارن متوسط الوزن والقياسات على مدار أسابيع، مش يوم بيوم. التقدم الصحي بيختلف من شخص للتاني." data-en="Compare trends over weeks, not day to day. Healthy progress varies from person to person.">قارن متوسط الوزن والقياسات على مدار أسابيع، مش يوم بيوم. التقدم الصحي بيختلف من شخص للتاني.</p></div>
+</section>
+
+<section class="page" id="calculator">
+ <div class="eyebrow" data-ar="حاسبة التغذية" data-en="NUTRITION CALCULATOR">حاسبة التغذية</div>
+ <h2 data-ar="احسب احتياجك اليومي" data-en="Calculate your daily needs">احسب احتياجك اليومي</h2>
+ <p data-ar="أدخل بياناتك للحصول على تقدير مبدئي للسعرات والماكروز." data-en="Enter your details for an estimated calorie and macro target.">أدخل بياناتك للحصول على تقدير مبدئي للسعرات والماكروز.</p>
+ <div class="card">
+  <label for="calcSex" data-ar="الجنس" data-en="Sex">الجنس</label>
+  <select class="field" id="calcSex">
+   <option value="male" data-ar="ذكر" data-en="Male">ذكر</option>
+   <option value="female" data-ar="أنثى" data-en="Female">أنثى</option>
+  </select>
+  <label for="calcAge" data-ar="العمر (سنة)" data-en="Age (years)">العمر (سنة)</label>
+  <input class="field" id="calcAge" type="number" min="18" max="100" placeholder="مثال: 23">
+  <label for="calcHeight" data-ar="الطول (سم)" data-en="Height (cm)">الطول (سم)</label>
+  <input class="field" id="calcHeight" type="number" min="120" max="230" placeholder="مثال: 175">
+  <label for="calcWeight" data-ar="الوزن (كجم)" data-en="Weight (kg)">الوزن (كجم)</label>
+  <input class="field" id="calcWeight" type="number" min="35" max="250" step="0.1" placeholder="مثال: 75">
+  <label for="calcActivity" data-ar="مستوى النشاط" data-en="Activity level">مستوى النشاط</label>
+  <select class="field" id="calcActivity">
+   <option value="1.2" data-ar="قليل جدًا — عمل مكتبي ولا يوجد تمرين تقريبًا" data-en="Sedentary — little or no exercise">قليل جدًا — عمل مكتبي ولا يوجد تمرين تقريبًا</option>
+   <option value="1.375" data-ar="خفيف — تمرين 1 إلى 3 أيام أسبوعيًا" data-en="Light — exercise 1–3 days/week">خفيف — تمرين 1 إلى 3 أيام أسبوعيًا</option>
+   <option value="1.55" selected data-ar="متوسط — تمرين 3 إلى 5 أيام أسبوعيًا" data-en="Moderate — exercise 3–5 days/week">متوسط — تمرين 3 إلى 5 أيام أسبوعيًا</option>
+   <option value="1.725" data-ar="عالي — تمرين 6 إلى 7 أيام أسبوعيًا" data-en="Very active — exercise 6–7 days/week">عالي — تمرين 6 إلى 7 أيام أسبوعيًا</option>
+   <option value="1.9" data-ar="عالي جدًا — مجهود بدني شاق يوميًا" data-en="Extra active — very hard daily activity">عالي جدًا — مجهود بدني شاق يوميًا</option>
+  </select>
+  <label for="calcGoal" data-ar="هدفك" data-en="Your goal">هدفك</label>
+  <select class="field" id="calcGoal">
+   <option value="lose" data-ar="خسارة الدهون" data-en="Fat loss">خسارة الدهون</option>
+   <option value="maintain" data-ar="تثبيت الوزن" data-en="Maintain weight">تثبيت الوزن</option>
+   <option value="gain" data-ar="زيادة الوزن والعضلات" data-en="Muscle / weight gain">زيادة الوزن والعضلات</option>
+  </select>
+  <button class="primary" style="width:100%;margin-top:0" onclick="calculateCalories()" data-ar="احسب احتياجي" data-en="Calculate my needs">احسب احتياجي</button>
+ </div>
+ <div id="calcResults" style="display:none">
+  <div class="section-head"><h3 data-ar="نتيجتك التقديرية" data-en="Your estimated results">نتيجتك التقديرية</h3></div>
+  <div class="card">
+   <small data-ar="السعرات اليومية المستهدفة" data-en="Daily calorie target">السعرات اليومية المستهدفة</small>
+   <div style="font-size:36px;font-weight:900;color:var(--red);margin:4px 0"><span id="targetCalories">—</span> <small style="font-size:13px;color:var(--muted)">kcal</small></div>
+   <p id="goalSummary"></p>
+   <div class="stats">
+    <div class="stat"><b id="bmrValue">—</b><span>BMR kcal</span></div>
+    <div class="stat"><b id="tdeeValue">—</b><span>TDEE kcal</span></div>
+    <div class="stat"><b id="targetValue">—</b><span data-ar="الهدف" data-en="Target">الهدف</span></div>
+   </div>
+  </div>
+  <div class="section-head"><h3 data-ar="توزيع الماكروز المقترح" data-en="Suggested macros">توزيع الماكروز المقترح</h3></div>
+  <div class="grid2">
+   <div class="stat"><b id="proteinValue">—</b><span data-ar="بروتين (جرام)" data-en="Protein (g)">بروتين (جرام)</span></div>
+   <div class="stat"><b id="carbValue">—</b><span data-ar="كربوهيدرات (جرام)" data-en="Carbs (g)">كربوهيدرات (جرام)</span></div>
+   <div class="stat"><b id="fatValue">—</b><span data-ar="دهون (جرام)" data-en="Fat (g)">دهون (جرام)</span></div>
+  </div>
+  <div class="card" style="margin-top:12px"><small data-ar="هذه تقديرات باستخدام معادلة Mifflin-St Jeor ومعامل النشاط الذي اخترته. النتائج ليست قياسًا مباشرًا للأيض أو بديلًا عن اختصاصي تغذية، وقد تختلف الاحتياجات الفعلية. لا تستخدم هدف خسارة الوزن دون استشارة مختص إذا كنت أقل من 18 عامًا أو حاملًا أو مرضعًا أو لديك حالة صحية." data-en="Estimates use the Mifflin-St Jeor equation and your selected activity factor. They are not a direct metabolic measurement or a substitute for a dietitian. Seek professional advice before weight-loss dieting if under 18, pregnant, breastfeeding, or managing a medical condition.">هذه تقديرات باستخدام معادلة Mifflin-St Jeor ومعامل النشاط الذي اخترته. النتائج ليست قياسًا مباشرًا للأيض أو بديلًا عن اختصاصي تغذية، وقد تختلف الاحتياجات الفعلية. لا تستخدم هدف خسارة الوزن دون استشارة مختص إذا كنت أقل من 18 عامًا أو حاملًا أو مرضعًا أو لديك حالة صحية.</small></div>
+ </div>
+</section>
+
+<section class="page" id="nutrition">
+ <div class="eyebrow" data-ar="التغذية" data-en="NUTRITION">التغذية</div><h2 data-ar="غذّي هدفك" data-en="Fuel your goal">غذّي هدفك</h2>
+ <p data-ar="أساسيات بسيطة تساعدك تنظم أكلك." data-en="Simple basics to help organize your nutrition.">أساسيات بسيطة تساعدك تنظم أكلك.</p>
+ <div class="card row"><div class="tile">🥚</div><div class="grow"><h4 data-ar="البروتين" data-en="Protein">البروتين</h4><small data-ar="مهم لبناء العضلات والتعافي." data-en="Supports muscle building and recovery.">مهم لبناء العضلات والتعافي.</small></div></div>
+ <div class="card row"><div class="tile">🍚</div><div class="grow"><h4 data-ar="الكربوهيدرات" data-en="Carbohydrates">الكربوهيدرات</h4><small data-ar="مصدر مهم للطاقة أثناء التمرين." data-en="An important energy source for training.">مصدر مهم للطاقة أثناء التمرين.</small></div></div>
+ <div class="card row"><div class="tile">🥑</div><div class="grow"><h4 data-ar="الدهون الصحية" data-en="Healthy fats">الدهون الصحية</h4><small data-ar="جزء من نظام غذائي متوازن." data-en="Part of a balanced diet.">جزء من نظام غذائي متوازن.</small></div></div>
+ <div class="card"><h4 data-ar="معلومة مهمة" data-en="Important">معلومة مهمة</h4><p data-ar="احتياجات السعرات والبروتين تختلف حسب الوزن والطول والعمر والنشاط والهدف. التطبيق في نسخته الحالية لا يقدم وصفة غذائية طبية أو حسابًا شخصيًا معتمدًا." data-en="Calorie and protein needs depend on body size, age, activity, and goals. This version does not provide medical nutrition advice or validated personalized calculations.">احتياجات السعرات والبروتين تختلف حسب الوزن والطول والعمر والنشاط والهدف. التطبيق في نسخته الحالية لا يقدم وصفة غذائية طبية أو حسابًا شخصيًا معتمدًا.</p></div>
+</section>
+</main>
+<div class="footer">GYM PRO • VERSION 1.2 • YOUR FITNESS JOURNEY</div>
+</div>
+
+<nav class="tabs"><div class="tabwrap">
+ <button class="tab active" data-page="home" onclick="showPage('home')"><span class="ico">⌂</span><span data-ar="الرئيسية" data-en="Home">الرئيسية</span></button>
+ <button class="tab" data-page="workouts" onclick="showPage('workouts')"><span class="ico">🏋</span><span data-ar="التمارين" data-en="Workouts">التمارين</span></button>
+ <button class="tab" data-page="progress" onclick="showPage('progress')"><span class="ico">↗</span><span data-ar="تقدمي" data-en="Progress">تقدمي</span></button>
+ <button class="tab" data-page="calculator" onclick="showPage('calculator')"><span class="ico">🧮</span><span data-ar="السعرات" data-en="Calories">السعرات</span></button>
+ <button class="tab" data-page="nutrition" onclick="showPage('nutrition')"><span class="ico">🥗</span><span data-ar="التغذية" data-en="Nutrition">التغذية</span></button>
+</div></nav>
+<div class="toast" id="toast"></div>
+<script>
+
+const trainingPlans = [
+ {id:'full',name:'Full Body',icon:'🏋️',days:'3 days',levelAr:'مبتدئ',levelEn:'Beginner',goalAr:'تأسيس القوة وبناء العادة',goalEn:'Build strength and consistency',descAr:'تدريب عضلات الجسم بالكامل في كل حصة، مع أيام راحة بينها. مناسب جدًا كبداية.',descEn:'Train the whole body each session, with rest days between workouts. A strong beginner option.',schedule:[
+  ['اليوم 1','سكوات 3×8–10 • بنش برس 3×8–12 • سحب أمامي 3×10–12 • ضغط كتف 2×10 • بلانك 3 جولات','Day 1','Squat 3×8–10 • Bench press 3×8–12 • Lat pulldown 3×10–12 • Shoulder press 2×10 • Plank 3 rounds'],
+  ['اليوم 2','راحة أو مشي خفيف','Day 2','Rest or light walking'],
+  ['اليوم 3','ديدلفت روماني 3×8–10 • ضغط دمبل مائل 3×10 • تجديف 3×10 • ليج كيرل 2×12 • بايسبس 2×12','Day 3','Romanian deadlift 3×8–10 • Incline DB press 3×10 • Row 3×10 • Leg curl 2×12 • Biceps 2×12'],
+  ['اليوم 4','راحة','Day 4','Rest'],
+  ['اليوم 5','ليج برس 3×10 • ضغط صدر 3×10 • سحب أرضي 3×10 • رفرفة جانبي 2×12 • ترايسبس 2×12','Day 5','Leg press 3×10 • Chest press 3×10 • Seated row 3×10 • Lateral raise 2×12 • Triceps 2×12']
+ ]},
+ {id:'upperlower',name:'Upper / Lower',icon:'⚡',days:'4 days',levelAr:'مبتدئ – متوسط',levelEn:'Beginner–Intermediate',goalAr:'توازن بين القوة والحجم العضلي',goalEn:'Balanced strength and hypertrophy',descAr:'يوم للجزء العلوي ويوم للسفلي، ويتكرر التقسيم مرتين أسبوعيًا.',descEn:'Alternate upper- and lower-body sessions, repeating the split twice weekly.',schedule:[
+  ['اليوم 1 – علوي','بنش برس 3×6–10 • تجديف 3×8–12 • ضغط كتف 3×8–10 • سحب أمامي 3×10 • ذراع 2×12','Day 1 – Upper','Bench press 3×6–10 • Row 3×8–12 • Shoulder press 3×8–10 • Pulldown 3×10 • Arms 2×12'],
+  ['اليوم 2 – سفلي','سكوات 3×6–10 • رومانيان ديدلفت 3×8–10 • ليج برس 3×10 • سمانة 3×12','Day 2 – Lower','Squat 3×6–10 • Romanian deadlift 3×8–10 • Leg press 3×10 • Calves 3×12'],
+  ['اليوم 3','راحة','Day 3','Rest'],
+  ['اليوم 4 – علوي','ضغط دمبل مائل 3×10 • سحب أرضي 3×10 • رفرفة جانبي 3×12 • فيس بول 2×15 • ذراع 2×12','Day 4 – Upper','Incline DB press 3×10 • Seated row 3×10 • Lateral raise 3×12 • Face pull 2×15 • Arms 2×12'],
+  ['اليوم 5 – سفلي','هاك سكوات 3×10 • ليج كيرل 3×12 • هيب ثرست 3×10 • سمانة 3×15','Day 5 – Lower','Hack squat 3×10 • Leg curl 3×12 • Hip thrust 3×10 • Calves 3×15']
+ ]},
+ {id:'ppl',name:'Push / Pull / Legs',icon:'🔥',days:'3–6 days',levelAr:'متوسط',levelEn:'Intermediate',goalAr:'زيادة حجم العضلات',goalEn:'Muscle hypertrophy',descAr:'الدفع للصدر والكتف والترايسبس، والسحب للظهر والبايسبس، ويوم مستقل للأرجل. يمكن تكراره مرة أو مرتين.',descEn:'Push trains chest, shoulders and triceps; pull trains back and biceps; legs gets its own day. Repeat once or twice.',schedule:[
+  ['Push','بنش برس 3×6–10 • ضغط كتف 3×8–10 • ضغط مائل 3×10 • رفرفة جانبي 3×12–15 • ترايسبس 3×10–12','Push','Bench press 3×6–10 • Shoulder press 3×8–10 • Incline press 3×10 • Lateral raise 3×12–15 • Triceps 3×10–12'],
+  ['Pull','سحب أمامي 3×8–12 • تجديف 3×8–12 • سحب كيبل 2×12 • رفرفة خلفي 3×15 • بايسبس 3×10–12','Pull','Lat pulldown 3×8–12 • Row 3×8–12 • Cable pullover 2×12 • Rear delts 3×15 • Biceps 3×10–12'],
+  ['Legs','سكوات 3×6–10 • رومانيان ديدلفت 3×8–10 • ليج برس 3×12 • ليج كيرل 3×12 • سمانة 3×15','Legs','Squat 3×6–10 • Romanian deadlift 3×8–10 • Leg press 3×12 • Leg curl 3×12 • Calves 3×15'],
+  ['التكرار','راحة حسب الاستشفاء؛ في نظام 6 أيام كرر الأيام الثلاثة.','Repeat','Rest as needed; for a 6-day schedule repeat the three sessions.']
+ ]},
+ {id:'bro',name:'Bro Split',icon:'💪',days:'5 days',levelAr:'متوسط',levelEn:'Intermediate',goalAr:'تركيز أكبر على كل عضلة',goalEn:'More focus per muscle group',descAr:'تقسيم تقليدي يخصص يومًا أو مجموعة عضلية لكل حصة. اضبط الحجم التدريبي حتى لا يزيد عن قدرتك على التعافي.',descEn:'A traditional split dedicating sessions to muscle groups. Keep weekly volume recoverable.',schedule:[
+  ['اليوم 1 – صدر','بنش برس 3×8–10 • ضغط مائل 3×10 • تفتيح كيبل 3×12','Day 1 – Chest','Bench press 3×8–10 • Incline press 3×10 • Cable fly 3×12'],
+  ['اليوم 2 – ظهر','سحب أمامي 3×10 • تجديف 3×10 • سحب كيبل 3×12','Day 2 – Back','Lat pulldown 3×10 • Row 3×10 • Cable row 3×12'],
+  ['اليوم 3 – أكتاف','ضغط كتف 3×8–10 • رفرفة جانبي 3×12 • خلفي 3×15','Day 3 – Shoulders','Shoulder press 3×8–10 • Lateral raise 3×12 • Rear delts 3×15'],
+  ['اليوم 4 – أرجل','سكوات 3×8 • ليج برس 3×12 • ليج كيرل 3×12 • سمانة 3×15','Day 4 – Legs','Squat 3×8 • Leg press 3×12 • Leg curl 3×12 • Calves 3×15'],
+  ['اليوم 5 – ذراع','بايسبس 3×10 • هامر 2×12 • ترايسبس كيبل 3×12 • تمديد فوق الرأس 2×12','Day 5 – Arms','Biceps curl 3×10 • Hammer curl 2×12 • Triceps pushdown 3×12 • Overhead extension 2×12']
+ ]},
+ {id:'arnold',name:'Arnold Split',icon:'🏆',days:'6 days',levelAr:'متوسط – متقدم',levelEn:'Intermediate–Advanced',goalAr:'حجم عضلي وحجم تمرين مرتفع',goalEn:'Hypertrophy with higher training volume',descAr:'صدر وظهر، أكتاف وذراع، أرجل، ثم تكرار. يحتاج خبرة وقدرة جيدة على الاستشفاء.',descEn:'Chest/back, shoulders/arms, legs, then repeat. Requires training experience and recovery capacity.',schedule:[
+  ['اليوم 1 – صدر وظهر','بنش برس 3×8 • تفتيح 3×12 • سحب أمامي 3×10 • تجديف 3×10','Day 1 – Chest & Back','Bench press 3×8 • Fly 3×12 • Pulldown 3×10 • Row 3×10'],
+  ['اليوم 2 – أكتاف وذراع','ضغط كتف 3×8 • رفرفة جانبي 3×12 • بايسبس 3×10 • ترايسبس 3×10','Day 2 – Shoulders & Arms','Shoulder press 3×8 • Lateral raise 3×12 • Biceps 3×10 • Triceps 3×10'],
+  ['اليوم 3 – أرجل','سكوات 3×8 • ليج برس 3×12 • ليج كيرل 3×12 • سمانة 3×15','Day 3 – Legs','Squat 3×8 • Leg press 3×12 • Leg curl 3×12 • Calves 3×15'],
+  ['الأيام 4–6','كرر نفس ترتيب الأيام 1–3 مع تغيير بسيط في الزوايا أو التمارين.','Days 4–6','Repeat days 1–3 with small exercise or angle variations.']
+ ]},
+ {id:'phul',name:'PHUL',icon:'📈',days:'4 days',levelAr:'متوسط',levelEn:'Intermediate',goalAr:'القوة والتضخيم معًا',goalEn:'Strength and hypertrophy',descAr:'يومان للقوة بتكرارات أقل ويومان للتضخيم بتكرارات أعلى.',descEn:'Two strength-focused days with lower reps and two hypertrophy days with moderate-to-higher reps.',schedule:[
+  ['اليوم 1 – علوي قوة','بنش برس 3×3–5 • تجديف بار 3×3–5 • ضغط كتف 3×5 • سحب 3×6','Day 1 – Upper Power','Bench press 3×3–5 • Barbell row 3×3–5 • Shoulder press 3×5 • Pulldown 3×6'],
+  ['اليوم 2 – سفلي قوة','سكوات 3×3–5 • ديدلفت 2×3–5 • ليج كيرل 3×8','Day 2 – Lower Power','Squat 3×3–5 • Deadlift 2×3–5 • Leg curl 3×8'],
+  ['اليوم 3','راحة','Day 3','Rest'],
+  ['اليوم 4 – علوي تضخيم','ضغط دمبل 3×8–12 • سحب كيبل 3×10–12 • رفرفة جانبي 3×12–15 • ذراع 2×12','Day 4 – Upper Hypertrophy','DB press 3×8–12 • Cable row 3×10–12 • Lateral raise 3×12–15 • Arms 2×12'],
+  ['اليوم 5 – سفلي تضخيم','سكوات أمامي 3×8–10 • رومانيان ديدلفت 3×8–12 • ليج إكستنشن 3×12 • سمانة 3×15','Day 5 – Lower Hypertrophy','Front squat 3×8–10 • Romanian deadlift 3×8–12 • Leg extension 3×12 • Calves 3×15']
+ ]},
+ {id:'phat',name:'PHAT',icon:'🚀',days:'5 days',levelAr:'متقدم',levelEn:'Advanced',goalAr:'قوة وتضخيم بحجم تدريبي كبير',goalEn:'Power and hypertrophy with high volume',descAr:'يجمع أيام القوة مع أيام تضخيم للجزء العلوي والسفلي. ليس الاختيار الأول للمبتدئين.',descEn:'Combines power days with upper- and lower-body hypertrophy days. Not a first choice for beginners.',schedule:[
+  ['اليوم 1 – علوي قوة','بنش 3×3–5 • تجديف 3×3–5 • ضغط كتف 3×5','Day 1 – Upper Power','Bench 3×3–5 • Row 3×3–5 • Shoulder press 3×5'],
+  ['اليوم 2 – سفلي قوة','سكوات 3×3–5 • ديدلفت 2×3–5 • سمانة 3×8','Day 2 – Lower Power','Squat 3×3–5 • Deadlift 2×3–5 • Calves 3×8'],
+  ['اليوم 3 – ظهر وأكتاف تضخيم','سحب أمامي 3×10 • تجديف 3×12 • رفرفة جانبي 3×15 • خلفي 3×15','Day 3 – Back & Shoulders','Pulldown 3×10 • Row 3×12 • Lateral raise 3×15 • Rear delts 3×15'],
+  ['اليوم 4 – أرجل تضخيم','ليج برس 3×12 • ليج إكستنشن 3×15 • ليج كيرل 3×12 • سمانة 3×15','Day 4 – Lower Hypertrophy','Leg press 3×12 • Leg extension 3×15 • Leg curl 3×12 • Calves 3×15'],
+  ['اليوم 5 – صدر وذراع','ضغط دمبل 3×10 • تفتيح 3×12 • بايسبس 3×12 • ترايسبس 3×12','Day 5 – Chest & Arms','DB press 3×10 • Fly 3×12 • Biceps 3×12 • Triceps 3×12']
+ ]},
+ {id:'fivebyfive',name:'StrongLifts 5×5',icon:'🏋️‍♂️',days:'3 days',levelAr:'مبتدئ',levelEn:'Beginner',goalAr:'بناء أساس القوة',goalEn:'Build a strength foundation',descAr:'يعتمد على الحركات المركبة ومجموعات قليلة التكرار. ابدأ بأوزان خفيفة وتعلم الأداء الصحيح قبل زيادة الحمل.',descEn:'Built around compound lifts and low-rep sets. Start light and learn technique before adding load.',schedule:[
+  ['A','سكوات 5×5 • بنش برس 5×5 • باربل رو 5×5','A','Squat 5×5 • Bench press 5×5 • Barbell row 5×5'],
+  ['راحة','راحة أو حركة خفيفة','Rest','Rest or light movement'],
+  ['B','سكوات 5×5 • ضغط كتف 5×5 • ديدلفت 1×5','B','Squat 5×5 • Overhead press 5×5 • Deadlift 1×5'],
+  ['راحة','راحة','Rest','Rest'],
+  ['كرر','تناوب بين A وB ثلاث حصص أسبوعيًا مع يوم راحة بين الحصص.','Repeat','Alternate A and B for three non-consecutive sessions per week.']
+ ]},
+ {id:'torso',name:'Torso / Limbs',icon:'🧩',days:'4 days',levelAr:'متوسط',levelEn:'Intermediate',goalAr:'تقسيم متوازن ومرن',goalEn:'Balanced and flexible split',descAr:'يومين للصدر والظهر والكتف (Torso)، ويومان للأطراف والذراعين (Limbs).',descEn:'Two torso sessions for chest, back and shoulders, plus two limbs sessions for legs and arms.',schedule:[
+  ['اليوم 1 – Torso','بنش برس 3×8 • تجديف 3×10 • ضغط كتف 3×10 • سحب أمامي 3×10','Day 1 – Torso','Bench press 3×8 • Row 3×10 • Shoulder press 3×10 • Pulldown 3×10'],
+  ['اليوم 2 – Limbs','سكوات 3×8 • رومانيان ديدلفت 3×10 • بايسبس 2×12 • ترايسبس 2×12','Day 2 – Limbs','Squat 3×8 • Romanian deadlift 3×10 • Biceps 2×12 • Triceps 2×12'],
+  ['اليوم 3','راحة','Day 3','Rest'],
+  ['اليوم 4 – Torso','ضغط مائل 3×10 • سحب كيبل 3×12 • رفرفة جانبي 3×15 • فيس بول 2×15','Day 4 – Torso','Incline press 3×10 • Cable row 3×12 • Lateral raise 3×15 • Face pull 2×15'],
+  ['اليوم 5 – Limbs','ليج برس 3×12 • ليج كيرل 3×12 • سمانة 3×15 • ذراع 2×12','Day 5 – Limbs','Leg press 3×12 • Leg curl 3×12 • Calves 3×15 • Arms 2×12']
+ ]},
+ {id:'gvt',name:'German Volume Training',icon:'🔟',days:'4 days',levelAr:'متقدم',levelEn:'Advanced',goalAr:'حجم تدريبي مرتفع',goalEn:'High-volume training',descAr:'أسلوب 10 مجموعات × 10 تكرارات لتمرين أساسي، وهو مرهق جدًا. استخدمه لفترة محدودة وبأحمال محافظة، وليس للمبتدئين.',descEn:'Uses 10 sets of 10 on a main lift and is very demanding. Use conservative loads for limited blocks; not for beginners.',schedule:[
+  ['اليوم 1 – صدر وظهر','بنش برس 10×10 • سحب أمامي 10×10 (يمكن تقليل أحدهما إلى 3×10)','Day 1 – Chest & Back','Bench press 10×10 • Lat pulldown 10×10 (consider reducing one to 3×10)'],
+  ['اليوم 2 – أرجل وبطن','سكوات 10×10 • كرنش 3×15','Day 2 – Legs & Abs','Squat 10×10 • Crunch 3×15'],
+  ['اليوم 3','راحة','Day 3','Rest'],
+  ['اليوم 4 – ذراع وكتف','ضغط كتف 10×10 أو تمرين واحد رئيسي 10×10، ثم ذراع 2×12','Day 4 – Arms & Shoulders','Shoulder press 10×10 or one main lift for 10×10, then arms 2×12'],
+  ['اليوم 5','راحة واستشفاء','Day 5','Rest and recover']
+ ]},
+ {id:'pushpull',name:'Push / Pull',icon:'🔄',days:'4 days',levelAr:'مبتدئ – متوسط',levelEn:'Beginner–Intermediate',goalAr:'تقسيم بسيط بدون يوم أرجل مستقل',goalEn:'Simple split without a separate leg day',descAr:'يقسم التدريب إلى حركات دفع وسحب، مع إدخال تمارين الأرجل في اليومين.',descEn:'Splits sessions into push and pull patterns, with leg work included in both days.',schedule:[
+  ['اليوم 1 – Push','سكوات 3×8 • بنش برس 3×8–10 • ضغط كتف 3×10 • ترايسبس 2×12','Day 1 – Push','Squat 3×8 • Bench press 3×8–10 • Shoulder press 3×10 • Triceps 2×12'],
+  ['اليوم 2 – Pull','رومانيان ديدلفت 3×8 • تجديف 3×10 • سحب أمامي 3×10 • بايسبس 2×12','Day 2 – Pull','Romanian deadlift 3×8 • Row 3×10 • Pulldown 3×10 • Biceps 2×12'],
+  ['اليوم 3','راحة','Day 3','Rest'],
+  ['اليوم 4 – Push','ليج برس 3×12 • ضغط دمبل مائل 3×10 • رفرفة جانبي 3×12 • ترايسبس 2×12','Day 4 – Push','Leg press 3×12 • Incline DB press 3×10 • Lateral raise 3×12 • Triceps 2×12'],
+  ['اليوم 5 – Pull','ليج كيرل 3×12 • سحب كيبل 3×12 • تجديف 3×10 • بايسبس 2×12','Day 5 – Pull','Leg curl 3×12 • Cable pulldown 3×12 • Row 3×10 • Biceps 2×12']
+ ]}
+];
+function renderPlans(){
+ const catalog=document.getElementById('planCatalog'); if(!catalog)return;
+ catalog.innerHTML=trainingPlans.map(p=>`<button class="plan-card" onclick="openPlan('${p.id}')"><div class="plan-icon">${p.icon}</div><h4>${p.name}</h4><p>${language==='ar'?p.goalAr:p.goalEn}</p><div class="actions" style="margin-top:9px"><span class="pill">${p.days}</span><span class="pill">${language==='ar'?p.levelAr:p.levelEn}</span></div></button>`).join('');
+}
+function openPlan(id){
+ const p=trainingPlans.find(x=>x.id===id); if(!p)return;
+ document.getElementById('planTitle').textContent=p.name;
+ document.getElementById('planMeta').textContent=p.days+' • '+(language==='ar'?p.levelAr:p.levelEn);
+ document.getElementById('planDescription').textContent=language==='ar'?p.descAr:p.descEn;
+ document.getElementById('planSchedule').innerHTML=p.schedule.map(d=>`<div class="schedule-row"><b>${language==='ar'?d[0]:d[2]}</b><small>${language==='ar'?d[1]:d[3]}</small></div>`).join('');
+ document.getElementById('planNote').textContent=language==='ar'?'ملاحظة: الأوزان والمجموعات قابلة للتعديل. ابدأ بإحماء مناسب، واترك 1–3 تكرارات احتياطية في أغلب المجموعات، وخذ راحة كافية. أوقف التمرين عند الألم الحاد.':'Note: Adjust loads and sets to your ability. Warm up, keep 1–3 reps in reserve on most sets, rest enough, and stop if you feel sharp pain.';
+ document.getElementById('planDetails').style.display='block';
+ document.getElementById('planDetails').scrollIntoView({behavior:'smooth',block:'start'});
+}
+function closePlan(){document.getElementById('planDetails').style.display='none';}
+
+function calculateCalories(){
+ const sex=document.getElementById('calcSex').value;
+ const age=Number(document.getElementById('calcAge').value);
+ const height=Number(document.getElementById('calcHeight').value);
+ const weight=Number(document.getElementById('calcWeight').value);
+ const activity=Number(document.getElementById('calcActivity').value);
+ const goal=document.getElementById('calcGoal').value;
+ if(!Number.isFinite(age)||age<18||age>100||!Number.isFinite(height)||height<120||height>230||!Number.isFinite(weight)||weight<35||weight>250){
+  toast(language==='ar'?'راجع العمر والطول والوزن المدخلين':'Check the age, height, and weight values');return;
+ }
+ const bmr=10*weight+6.25*height-5*age+(sex==='male'?5:-161);
+ const tdee=bmr*activity;
+ const target=Math.round(tdee+(goal==='lose'?-400:goal==='gain'?250:0));
+ const protein=Math.round(weight*1.8);
+ const fat=Math.round(weight*0.8);
+ const carbs=Math.max(0,Math.round((target-protein*4-fat*9)/4));
+ document.getElementById('targetCalories').textContent=target.toLocaleString();
+ document.getElementById('bmrValue').textContent=Math.round(bmr).toLocaleString();
+ document.getElementById('tdeeValue').textContent=Math.round(tdee).toLocaleString();
+ document.getElementById('targetValue').textContent=goal==='lose'?(language==='ar'?'تنشيف':'Cut'):goal==='gain'?(language==='ar'?'زيادة':'Gain'):(language==='ar'?'ثبات':'Maintain');
+ document.getElementById('proteinValue').textContent=protein;
+ document.getElementById('fatValue').textContent=fat;
+ document.getElementById('carbValue').textContent=carbs;
+ document.getElementById('goalSummary').textContent=goal==='lose'?(language==='ar'?'تم تطبيق عجز مبدئي 400 سعرة يوميًا.':'An initial 400 kcal daily deficit is applied.'):goal==='gain'?(language==='ar'?'تم تطبيق فائض مبدئي 250 سعرة يوميًا.':'An initial 250 kcal daily surplus is applied.'):(language==='ar'?'السعرات مساوية تقريبًا لسعرات الثبات.':'Calories are set around maintenance.');
+ document.getElementById('calcResults').style.display='block';
+}
+let language=localStorage.getItem('gympro-lang')||'ar';
+function applyLanguage(){
+ document.documentElement.lang=language;document.documentElement.dir=language==='ar'?'rtl':'ltr';
+ document.querySelectorAll('[data-ar]').forEach(el=>{el.textContent=el.dataset[language]});
+ document.getElementById('langBtn').textContent=language==='ar'?'EN / AR':'AR / EN';renderPlans();
+}
+document.getElementById('langBtn').addEventListener('click',()=>{language=language==='ar'?'en':'ar';localStorage.setItem('gympro-lang',language);applyLanguage();renderWeights()});
+function showPage(id){document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.getElementById(id).classList.add('active');document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('active',t.dataset.page===id));window.scrollTo({top:0,behavior:'smooth'})}
+function getWeights(){try{return JSON.parse(localStorage.getItem('gympro-weights')||'[]')}catch(e){return []}}
+function getLogs(){try{return JSON.parse(localStorage.getItem('gympro-logs')||'[]')}catch(e){return []}}
+function toast(msg){let t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2200)}
+function saveWeight(){let v=parseFloat(document.getElementById('weightInput').value);if(!v||v<20||v>350){toast(language==='ar'?'اكتب وزن صحيح بين 20 و350 كجم':'Enter a valid weight (20–350 kg)');return}let a=getWeights();a.unshift({value:v,date:new Date().toLocaleDateString(language==='ar'?'ar-EG':'en-GB')});localStorage.setItem('gympro-weights',JSON.stringify(a));document.getElementById('weightInput').value='';renderWeights();toast(language==='ar'?'تم حفظ الوزن':'Weight saved')}
+function renderWeights(){let a=getWeights();document.getElementById('weightValue').textContent=a.length?a[0].value:'—';let box=document.getElementById('weightHistory');if(!a.length){box.innerHTML='<div class="empty">'+(language==='ar'?'لسه مفيش قياسات. سجّل أول وزن ليك.':'No entries yet. Add your first weight.')+'</div>';return}box.innerHTML=a.slice(0,12).map(x=>'<div class="row" style="padding:9px 0;border-bottom:1px solid var(--line)"><div class="grow"><b>'+x.value+' kg</b><br><small>'+x.date+'</small></div><span class="pill">GYM PRO</span></div>').join('')}
+function refreshStats(){document.getElementById('workoutCount').textContent=getLogs().length;renderWeights()}
+applyLanguage();renderPlans();refreshStats();
+if('serviceWorker' in navigator && location.protocol.startsWith('http')){navigator.serviceWorker.register('./sw.js').catch(()=>{})}
+</script>
+</body></html>
