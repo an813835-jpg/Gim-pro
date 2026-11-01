@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+<rect width="512" height="512" rx="110" fill="#0b0b0e"/>
+<path d="M90 210h55v92H90zm277 0h55v92h-55zM145 235h222v42H145zM65 190h25v132H65zm357 0h25v132h-25z" fill="#ef233c"/>
+<path d="M180 150h152v42H180z" fill="#f7f7fa"/>
+<text x="256" y="380" text-anchor="middle" font-family="Arial,sans-serif" font-size="72" font-weight="900" fill="#f7f7fa">PRO</text>
+</svg>
